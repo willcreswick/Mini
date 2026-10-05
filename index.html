@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Custom Crossword</title>
+        <link rel="stylesheet" href="src/style.css">
+    </head>
+    <body>
+        <div id="area">
+            <div id="header">
+                <div id="header-left">
+                    <button class="header-button" id="reveal-word">
+                        Reveal Word
+                    </button>
+
+                    <button class="header-button" id="reveal-letter">
+                        Reveal Letter
+                    </button>
+                </div>
+
+                <div class="timer" id="timer">
+                    00:00
+                </div>
+
+                <div id="header-right">
+                    <button class="header-button" id="check-letter">
+                        Check Letter
+                    </button>
+
+                    <button class="header-button" id="check-all">
+                        Check All
+                    </button>
+                </div>
+            </div>
+            <div id="puzzle">
+                <section id="puzzle-area">
+                    <div id="puzzle-grid"></div>
+                </section>
+                <section id="clue-area">
+                    <div class="clue-list" id="clue-list-down"></div>
+                    <div class="clue-list" id="clue-list-across"></div>
+                </section>
+            </div>
+        </div>
+        <div id="win-overlay" style="display: none;">
+            <div id="win-message">
+                <h1>Puzzle Complete</h1>
+                <div id="time-taken"></div>
+            </div>
+        </div>
+    </body>
+    <script src="src/main.js"></script>
+</html>

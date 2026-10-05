@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Make a Puzzle</title>
+        <link rel="stylesheet" href="src/style.css">
+    </head>
+    <body>
+        <div id="area">
+            <div id="header">
+                <div id="header-left">
+                    <button class="header-button" id="import">
+                        Import
+                    </button>
+                </div>
+
+                <div id="header-right">
+                    <button class="header-button" id="export">
+                        Export
+                    </button>
+                </div>
+            </div>
+            
+            <div id="controls">
+                <label>
+                    Grid Size:
+                    <input
+                        type="number"
+                        id="grid-size"
+                        min="3"
+                        max="25"
+                        value="5"
+                    >
+                </label>
+
+                <button id="resize-grid">
+                    Resize
+                </button>
+            </div>
+
+            <div id="puzzle">
+                <section id="puzzle-area">
+                    <div id="puzzle-grid"></div>
+                </section>
+                <section id="clue-area">
+                    <div class="clue-list" id="clue-list-down"></div>
+                    <div class="clue-list" id="clue-list-across"></div>
+                </section>
+            </div>
+        </div>
+    </body>
+    <script src="src/create.js"></script>
+</html>
