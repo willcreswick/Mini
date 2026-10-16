@@ -1,12 +1,21 @@
-const PUZZLE_DATA = JSON.parse(
-    decodeURIComponent(
-        atob(
-            new URLSearchParams(
-                location.search
-            ).get("puzzle")
+let PUZZLE_DATA = null;
+
+const compressed = location.hash.slice(1);
+if (compressed) {
+    PUZZLE_DATA = JSON.parse(
+        decodeURIComponent(atob(compressed))
+    );
+} else {
+    PUZZLE_DATA = JSON.parse(
+        decodeURIComponent(
+            atob(
+                new URLSearchParams(
+                    location.search
+                ).get("puzzle")
+            )
         )
-    )
-);
+    );
+}
 
 const grid = document.getElementById("puzzle-grid");
 const acrossHints = document.getElementById("clue-list-across");

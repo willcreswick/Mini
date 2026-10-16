@@ -449,16 +449,15 @@ function buildPuzzleData() {
 function exportPuzzle() {
     const puzzleData = buildPuzzleData();
 
-    const encoded =
-        btoa(
-            encodeURIComponent(
-                JSON.stringify(puzzleData)
-            )
-        );
+    const encoded = btoa(
+        encodeURIComponent(
+            JSON.stringify(puzzleData)
+        )
+    );
     console.log(puzzleData);
 
     window.open(
-        `index.html?puzzle=${encoded}`,
+        `index.html#${encoded}`,
         "_blank"
     );
 }
