@@ -156,6 +156,10 @@ body {
     cursor: default;
 }
 
+.puzzle-grid-tile.mentioned {
+    background: #ffea8d;
+}
+
 .puzzle-grid-tile.highlighted {
     background: #d7ebff;
 }
@@ -166,6 +170,24 @@ body {
 
 .puzzle-grid-tile.selected.black {
     background: #142939;
+}
+
+.puzzle-grid-tile.circled::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    width: calc(100%);
+    height: calc(100%);
+    
+    border: 2px solid black;
+    border-radius: 50%;
+    box-sizing: border-box;
+    
+    z-index: 1;
+    pointer-events: none;
 }
 
 .tile-text {
@@ -219,7 +241,7 @@ body {
 .clue-list {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 4px;
 }
 
 .clue-list::before {
@@ -357,16 +379,37 @@ body {
 }
 
 .clue-mentions {
-    min-width: 110px;
-    max-width: 150px;
-    height: 55px;
-    font-size: 11px;
+    width: 40%;
+    height: 1.9rem;
+    padding: 6px 8px;
+
+    border: 1px solid #d8d8d8;
+    border-radius: 6px;
+
+    font-size: 0.5rem;
+
+    outline: none;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.clue-mentions::-webkit-scrollbar {
+    display: none;
+}
+
+.clue-mentions option:checked {
+    background: #d7ebff;
+}
+
+.clue-mentions option:hover {
+    background: #eaf4ff;
 }
 
 .clue-row {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 4px;
 }
 
 /* ---------- Win Overlay ---------- */

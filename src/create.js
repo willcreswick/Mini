@@ -50,6 +50,7 @@ function createGrid(newSize) {
             cell.dataset.row = r;
             cell.dataset.col = c;
             cell.dataset.black = "false";
+            cell.dataset.circled = "false";
 
             const text = document.createElement("div");
             text.classList.add("tile-text");
@@ -514,6 +515,24 @@ function buildPuzzleData() {
         tiles.push(row);
     }
 
+    let circled = [];
+
+    for (let r = 0; r < size; r++) {
+        let row = "";
+
+        for (let c = 0; c < size; c++) {
+            const cell = cells[r][c];
+
+            if (cell.dataset.circled === "true") {
+                row += "o";
+            } else {
+                row += ".";
+            }
+        }
+
+        circled.push(row);
+    }
+
     let across = {};
     let down = {};
 
@@ -655,6 +674,7 @@ function buildPuzzleData() {
     return {
         size,
         tiles,
+        circled,
         across,
         down
     };
@@ -766,6 +786,18 @@ document.addEventListener("keydown", e => {
         generateHints();
 
         moveSelection(1, 0);
+
+        return;
+    }
+
+    if (e.key === "0") {
+        if (selectedCell.dataset.circled === "true") {
+            selectedCell.classList.remove("circled");
+            selectedCell.dataset.circled = "false";
+        } else {
+            selectedCell.classList.add("circled");
+            selectedCell.dataset.circled = "true";
+        }
 
         return;
     }

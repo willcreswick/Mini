@@ -65,6 +65,7 @@ function initGrid() {
             const letter = row[c];
 
             const isBlack = letter === "*";
+            const isCircled = PUZZLE_DATA.circled[r][c] === "o";
 
             const acrossNum = PUZZLE_DATA.across.num[r][c];
             const downNum = PUZZLE_DATA.down.num[r][c];
@@ -78,6 +79,7 @@ function initGrid() {
                 createTile(
                     `${r}-${c}`,
                     isBlack,
+                    isCircled,
                     acrossNum,
                     downNum,
                     hintLabel,
@@ -152,6 +154,7 @@ function initClues() {
 function createTile(
     id,
     isBlack,
+    isCircled,
     acrossNum,
     downNum,
     hintLabel,
@@ -176,9 +179,8 @@ function createTile(
 
     input.classList.add("tile-text");
 
-    if (isBlack) {
-        tile.classList.add("black");
-    }
+    if (isBlack) tile.classList.add("black");
+    if (isCircled) tile.classList.add("circled");
 
     if (hintLabel !== "*" && hintLabel !== "") {
         label.classList.add("tile-label");
@@ -207,6 +209,7 @@ function selectTile(tile) {
     document.querySelectorAll(".puzzle-grid-tile").forEach(t => {
         t.classList.remove("selected");
         t.classList.remove("highlighted");
+        t.classList.remove("mentioned");
     });
 
     document.querySelectorAll(".clue").forEach(c => {
@@ -240,6 +243,14 @@ function selectTile(tile) {
             `.clue[data-direction="${across ? "across" : "down"}"][data-clue="${clueNum}"]`
         )
         ?.classList.add("selected");
+
+    let mentions = across ? PUZZLE_DATA.across.mentions : PUZZLE_DATA.down.mentions;
+    console.log(mentions[clueNum]);
+
+    mentions[clueNum]?.forEach(mention => {
+        const tile = document.getElementById(`tile-${mention[0]}-${mention[1]}`);
+        tile?.classList.add("mentioned");
+    });
 }
 
 /* ---------------- NAVIGATION ---------------- */
