@@ -65,7 +65,7 @@ function initGrid() {
             const letter = row[c];
 
             const isBlack = letter === "*";
-            const isCircled = PUZZLE_DATA.circled[r][c] === "o";
+            const isCircled = PUZZLE_DATA.circled?[r][c] === "o" : false;
 
             const acrossNum = PUZZLE_DATA.across.num[r][c];
             const downNum = PUZZLE_DATA.down.num[r][c];
@@ -245,12 +245,13 @@ function selectTile(tile) {
         ?.classList.add("selected");
 
     let mentions = across ? PUZZLE_DATA.across.mentions : PUZZLE_DATA.down.mentions;
-    console.log(mentions[clueNum]);
 
-    mentions[clueNum]?.forEach(mention => {
-        const tile = document.getElementById(`tile-${mention[0]}-${mention[1]}`);
-        tile?.classList.add("mentioned");
-    });
+    if(mentions) {
+        mentions[clueNum]?.forEach(mention => {
+            const tile = document.getElementById(`tile-${mention[0]}-${mention[1]}`);
+            tile?.classList.add("mentioned");
+        });
+    }
 }
 
 /* ---------------- NAVIGATION ---------------- */
