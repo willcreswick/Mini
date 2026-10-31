@@ -356,6 +356,19 @@ body {
     border-color: #bfbfbf;
 }
 
+.clue-mentions {
+    min-width: 110px;
+    max-width: 150px;
+    height: 55px;
+    font-size: 11px;
+}
+
+.clue-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
 /* ---------- Win Overlay ---------- */
 
 #win-overlay {
