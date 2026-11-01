@@ -65,7 +65,7 @@ function initGrid() {
             const letter = row[c];
 
             const isBlack = letter === "*";
-            const isCircled = PUZZLE_DATA.circled?[r][c] === "o" : false;
+            const isCircled = PUZZLE_DATA.circled ? PUZZLE_DATA.circled[r][c] === "o" : false;
 
             const acrossNum = PUZZLE_DATA.across.num[r][c];
             const downNum = PUZZLE_DATA.down.num[r][c];
